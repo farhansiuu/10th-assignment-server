@@ -1,1 +1,3 @@
-ServiceKey.json
+node_modules
+.env
+ServicsKey.json

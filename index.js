@@ -1,23 +1,20 @@
 const express = require('express')
 const cors = require('cors');
+require('dotenv').config()
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const admin = require("firebase-admin");
 const serviceAccount = require("./ServicsKey.json");
 const app = express()
 const port = process.env.PORT || 3000
-// XSQfkpSLOXYelCp0
-// pet_care
+
 app.use(cors())
 app.use(express.json())
-
-
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
-
-const uri = "mongodb+srv://pet_care:XSQfkpSLOXYelCp0@cluster0.up1dmjq.mongodb.net/?appName=Cluster0";
+const uri = `mongodb+srv://${process.env.DB_PET}:${process.env.DB_PASS}@cluster0.up1dmjq.mongodb.net/?appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
